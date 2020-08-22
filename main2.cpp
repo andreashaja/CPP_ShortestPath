@@ -25,7 +25,7 @@ int main() {
   sp.LoadGraphFromFile("citymap.txt");
 
   // compute shortest path between cities
-  sp.FindPathBetweenCities("Emden","Mainz");
+  sp.FindPathBetweenCities("Hannover","Mainz");
 
   // print resulting path to console
   sp.PrintShortestPath();
