@@ -1,0 +1,39 @@
+
+** HINTERGRUND
+Der Code in dieser Aufgabe ist in der Lage, die kürzeste Route zwischen zwei Städten zu berechnen. 
+Der Algorithmus arbeitet ähnlich wie Google Maps und ist in der Literatur unter "Dijkstra-Algorithmus" zu finden. 
+In dieser Aufgabe geht es aber nicht darum, den Dijkstra-Algorithmus zu verstehen, sondern darum, ihn zu benutzen.
+-------------
+
+** HINWEIS 
+Lass dich nicht von der Komplexität des Programms abschrecken! 
+Es geht in dieser und in den nächsten Aufgaben vor allem darum,  einige kleine Änderungen in "main.cpp" durchzuführen. 
+Der Code in "shortest_path.h / .cpp" wird in dieser Aufgabe nicht thematisiert.
+-------------
+
+** LERNZIEL
+Das Ziel dieser Aufgabe ist es, dir ein Gefühl für den Aufbau von fremden Programmen und Datenstrukturen zu geben. 
+Es geht hier nicht darum, sofort mit C++ einzusteigen, sondern du sollst eine bestehende Datenbasis erweitern und 
+dir die Logik dahinter selbständig erschließen. 
+-------------
+
+** AUFGABE
+Die Aufgabe besteht darin, die Textdatei "citymap.txt" um eine zusätzliche Stadt und eine zusätzliche Verbindung zwischen Städten zu erweitern. 
+ 
+- Schritt 1
+Füge die Stadt "Wiesbaden" in die Liste ein, indem du das Format der bereits vorhandenen Städte übernimmst und wo nötig anpasst.
+
+- Schritt 2
+Verbinde die Städte Frankfurt und Wiesbaden mit einer Straße, die 39km lang ist. Übernimm das Format der übrigen Verbindungen und passe an, wo nötig.
+
+- Schritt 3
+Verbinde die Städte Wiesbaden und Mainz mit einer Straße, die 17km lang ist. 
+
+- Schritt 4
+Entferne die direkte Verbindung zwischen Frankfurt und Mainz. 
+
+- Schritt 5
+Führe den Code aus und überprüfe die Ausgabe.
+
+** LÖSUNG
+Um die Lösung für diese Aufgabe zu sehen, registriere dich auf dieser Seite
