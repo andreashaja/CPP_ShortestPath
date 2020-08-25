@@ -37,3 +37,18 @@ Führe den Code aus und überprüfe die Ausgabe.
 
 ** LÖSUNG
 Um die Lösung für diese Aufgabe zu sehen, registriere dich auf dieser Seite
+-------------
+
+** COMPILIEREN UND AUSFÜHREN
+Wenn du nicht die Online-IDE repl.it benutzt, dann befolge diese Schritte, 
+um den Code für diese Aufgabe mit den richtigen Dateien zu kompilieren und auszuführen. 
+
+- Schritt 1 : Ein Verzeichnis für die Ausgabedateien anlegen
+Öffne das Terminal im Verzeichnis CPP_ShortestPath und gebe den Befehl `mkdir build; cd build` ein
+
+- Schritt 2 : Den Code der Aufgabe kompilieren
+Um sicherzustellen, dass alle Pfade und Compiler-Optionen richtig eingestellt sind, wird hier ein Makefile verwendet.
+Um diese Aufgabe zu kompilieren, gib den Befehl `cmake .. -DCODE_ID=ex_01; make;` auf der Konsole ein.
+
+- Schritt 3 : Den Code der Aufgabe ausführen
+Um den Code auszuführen, gib den Befehl `./ex_01 ./../citymap.txt` ein.

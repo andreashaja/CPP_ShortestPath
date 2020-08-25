@@ -2,8 +2,6 @@
  * The Fearless Engineer
  * Copyright (C) 2020, Dr. Andreas Haja.  
  *
- * Purpose: Program for finding the shortest path between cities using the Dikjstra / A* algorithm
- *
  * You should have received a copy of the MIT License along with this program. 
  * If not, see https://opensource.org/licenses/MIT.
  *
@@ -11,9 +9,14 @@
  * ----------------------------------------------------------------------
  */
 
+/* 
+ * Aufgabe CPP_SP_2 : Gib alle Städtenamen auf der Konsole aus
+ * 
+ * Hinweis : Dies ist der Starter-Code für die Aufgabe. Was zu tun ist, findest du in der Datei "beschreibung.txt".
+ */
+
 #include <iostream>
-#include <vector>
-#include "shortest_path.h"
+#include "./../../shortest_path.h"
 
 using namespace std;
 
@@ -28,9 +31,5 @@ int main(int argc, char** argv)
   // load map data from file
   sp.LoadGraphFromFile(filePath);
 
-  // compute shortest path between cities
-  sp.FindPathBetweenCities("Emden", "Mainz");
-
-  // print resulting path to console
-  sp.PrintShortestPath();
+  // student code
 }

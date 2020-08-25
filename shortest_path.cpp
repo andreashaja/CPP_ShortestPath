@@ -4,12 +4,13 @@
  *
  * Purpose: Program for finding the shortest path between cities using the Dikjstra / A* algorithm
  *
- * This file is published under the MIT License. For more info see https://opensource.org/licenses/MIT.
+ * You should have received a copy of the MIT License along with this program. 
+ * If not, see https://opensource.org/licenses/MIT.
  *
  * http://www.thefearlessengineer.com
  * ----------------------------------------------------------------------
  */
- 
+
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
@@ -38,13 +39,13 @@ void ShortestPath::LoadGraphFromFile(std::string filename)
                 int posTokenFront = lineStr.find("<");
                 int posTokenBack = lineStr.find(">");
                 if (posTokenFront < 0 || posTokenBack < 0)
-                  break; // quit loop if no complete token has been found
+                    break; // quit loop if no complete token has been found
                 std::string tokenStr = lineStr.substr(posTokenFront + 1, posTokenBack - 1);
 
                 // check if line is commented out
-                int posTokenComment = lineStr.find("//");                
-                if (posTokenComment>=0 &&  posTokenComment<posTokenFront )
-                  break; // quit loop because line is commented out
+                int posTokenComment = lineStr.find("//");
+                if (posTokenComment >= 0 && posTokenComment < posTokenFront)
+                    break; // quit loop because line is commented out
 
                 // extract token type and info
                 int posTokenInfo = tokenStr.find(":");
@@ -134,7 +135,7 @@ void ShortestPath::PrintGraph()
     // loop over all nodes
     for (auto it1 : _nodes)
     {
-        cout << "node " << it1->GetID()<< endl;
+        cout << "node " << it1->GetID() << endl;
         auto edges = it1->GetEdges();
         for (auto it2 : edges)
         {
@@ -171,24 +172,24 @@ void ShortestPath::FindPath(std::shared_ptr<Node> start, std::shared_ptr<Node> d
         // check if current step is the target node
         if (currStep->node->GetID() == destination->GetID())
         {
-          // backtrack path from destination to start point
-          std::shared_ptr<PathElement> step = currStep;
-          while (step->node->GetID() != startNode->node->GetID())
-          {
-            // extract node and accumulated cost from current path element
-            auto currElem = make_pair(step->node, (int)step->gScore);
+            // backtrack path from destination to start point
+            std::shared_ptr<PathElement> step = currStep;
+            while (step->node->GetID() != startNode->node->GetID())
+            {
+                // extract node and accumulated cost from current path element
+                auto currElem = make_pair(step->node, (int)step->gScore);
+                _shortestPath.push_back(currElem);
+
+                // replace current node with its own parent for backtracking
+                step = step->parent;
+            }
+
+            // add start node as last element
+            auto currElem = make_pair(step->node, step->gScore);
             _shortestPath.push_back(currElem);
-            
-            // replace current node with its own parent for backtracking
-            step = step->parent;
-          }
 
-          // add start node as last element
-          auto currElem = make_pair(step->node, step->gScore);
-          _shortestPath.push_back(currElem);
-
-          // path has been backtracked, so quit do-while loop
-          break;
+            // path has been backtracked, so quit do-while loop
+            break;
         }
 
         // process neighbors of current node
@@ -268,45 +269,44 @@ void ShortestPath::FindPathBetweenCities(std::string startCityName, std::string 
 // prints the path stored in _shortestPath
 void ShortestPath::PrintShortestPath()
 {
-  // loop over cities en route in reverse order
-  for (int i=_shortestPath.size()-1; i > 0 ; i--) 
-  {
-    cout << _shortestPath[i].first->GetName() << " -> "; 
-    //cout << "  " << _shortestPath[_shortestPath.size()-1].first->GetName() << "-" << _shortestPath[i].first->GetName() << " --> " << _shortestPath[i].second << "km" << endl;
-  }
-  cout << _shortestPath[0].first->GetName() << " : " << _shortestPath[0].second << "km" << endl;
+    // loop over cities en route in reverse order
+    for (int i = _shortestPath.size() - 1; i > 0; i--)
+    {
+        cout << _shortestPath[i].first->GetName() << " -> ";
+        //cout << "  " << _shortestPath[_shortestPath.size()-1].first->GetName() << "-" << _shortestPath[i].first->GetName() << " --> " << _shortestPath[i].second << "km" << endl;
+    }
+    cout << _shortestPath[0].first->GetName() << " : " << _shortestPath[0].second << "km" << endl;
 }
 
 // prints the total cost (in this case the length) between start and destination
 void ShortestPath::PrintTotalDistance()
 {
-  // get total distance from last element
-  int totalDistance = _shortestPath[0].second;
+    // get total distance from last element
+    int totalDistance = _shortestPath[0].second;
 
-  // get city names from first and last element
-  string startCity = _shortestPath[_shortestPath.size()-1].first->GetName();
-  string endCity = _shortestPath[0].first->GetName();
+    // get city names from first and last element
+    string startCity = _shortestPath[_shortestPath.size() - 1].first->GetName();
+    string endCity = _shortestPath[0].first->GetName();
 
-  // print result to console
-  cout << startCity << " - " << endCity << " = " << totalDistance << "km" << endl;
+    // print result to console
+    cout << startCity << " - " << endCity << " = " << totalDistance << "km" << endl;
 }
 
 // returns the city name of the node stored at position pos
 std::string ShortestPath::GetCityAtPosition(int pos)
 {
-  // create return string
-  string cityName = "";
+    // create return string
+    string cityName = "";
 
-  // check if index is within bounds
-  if(pos>=0 && pos<_nodes.size())
-  {
-    // retrieve city name 
-    shared_ptr<Node> node = _nodes.at(pos);
+    // check if index is within bounds
+    if (pos >= 0 && pos < _nodes.size())
+    {
+        // retrieve city name
+        shared_ptr<Node> node = _nodes.at(pos);
 
-    // assign name to return string
-    cityName = node->GetName();
-  } 
-  
-  return cityName;
+        // assign name to return string
+        cityName = node->GetName();
+    }
+
+    return cityName;
 }
-
