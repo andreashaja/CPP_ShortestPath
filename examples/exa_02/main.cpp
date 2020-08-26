@@ -13,24 +13,37 @@
 
 #include <iostream>
 #include <vector>
-#include "shortest_path.h"
+#include "./../../shortest_path.h"
 
 using namespace std;
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
   // create instance of shortest path search
   ShortestPath sp;
 
   // check wether filepath has been supplied as parameter
-  string filePath = argc>1 ? argv[1] : "citymap.txt"; // if no. of parameters > 1 use the parameter as filename, otherwise use citymap.txt 
-  
+  string filePath = argc > 1 ? argv[1] : "citymap.txt"; // if no. of parameters > 1 use the parameter as filename, otherwise use citymap.txt
+
   // load map data from file
   sp.LoadGraphFromFile(filePath);
 
-  // compute shortest path between cities
-  sp.FindPathBetweenCities("Emden", "Mainz");
+  // store all cities in a list
+  vector<string> cities{"Emden", "Oldenburg", "Köln", "Hannover", "Frankfurt"};
 
-  // print resulting path to console
-  sp.PrintShortestPath();
+  // initialize loop counter
+  int counter{0};
+
+  // loop as long as counter is smaller than the list size
+  while (counter < cities.size())
+  {
+    // compute shortest path between last city in list and Mainz
+    sp.FindPathBetweenCities(cities.at(counter), "Mainz");
+
+    // print resulting path to console
+    sp.PrintShortestPath();
+
+    // increment counter variable
+    counter++;
+  }
 }

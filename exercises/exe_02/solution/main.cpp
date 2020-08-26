@@ -2,16 +2,17 @@
  * The Fearless Engineer
  * Copyright (C) 2020, Dr. Andreas Haja.  
  *
- * This file is published under the MIT License. For more info see https://opensource.org/licenses/MIT.
+ * You should have received a copy of the MIT License along with this program. 
+ * If not, see https://opensource.org/licenses/MIT.
  *
- * http://www.thefearlessengineer.com
+ * http://www.thefearlessengineer.com 
  * ----------------------------------------------------------------------
  */
 
 /* 
  * Aufgabe CPP_SP_2 : Gib alle Städtenamen auf der Konsole aus
  * 
- * Hinweis : Dies ist die Muster-Lösung für Aufgabe CPP_SP_2
+ * Hinweis : Dies ist die Musterlösung für die Aufgabe.
  */
 
 #include <iostream>
@@ -19,13 +20,16 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char** argv)
 {
-    // create instance of shortest path search
-    ShortestPath sp;
+  // create instance of shortest path search
+  ShortestPath sp;
 
-    // load map from file (cities are graph nodes, streets are edges between nodes)
-    sp.LoadGraphFromFile("citymap.txt");
+  // check wether filepath has been supplied as parameter
+  string filePath = argc>1 ? argv[1] : "citymap.txt"; // if no. of parameters > 1 use the parameter, otherwise use citymap.txt
+  
+  // load map data from file
+  sp.LoadGraphFromFile(filePath);
 
     // student code
     int i = 0;

@@ -44,7 +44,7 @@ void ShortestPath::LoadGraphFromFile(std::string filename)
 
                 // check if line is commented out
                 int posTokenComment = lineStr.find("//");
-                if (posTokenComment >= 0 && posTokenComment < posTokenFront)
+                if (posTokenComment >= 0 && posTokenComment < posTokenFront) // is true, if the "//" are in front of the first token
                     break; // quit loop because line is commented out
 
                 // extract token type and info
