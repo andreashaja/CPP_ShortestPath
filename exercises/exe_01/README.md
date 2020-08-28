@@ -1,52 +1,71 @@
+# Übung 1: Ausgabe aller Städte mit einer `while`-Schleife
 
-# Aufgabe 1 : Erweitere die Städteliste für die Pfadsuche
+## Worum geht es?
 
-## HINTERGRUND
+Das Ziel dieser Aufgabe ist es, dir die Funktionsweise der `while`-Schleife in C++ zu vermitteln. Schleifen können einen Codeblock so lange ausführen, bis eine bestimmte Bedingung erreicht ist. Schleifen sind sehr nützlich, weil sie Zeit sparen, Fehler reduzieren und deinen Code kürzer und verständlicher machen.
 
-Der Code in dieser Aufgabe ist in der Lage, die kürzeste Route zwischen zwei Städten zu berechnen. 
-Der Algorithmus arbeitet ähnlich wie Google Maps und ist in der Literatur unter "Dijkstra-Algorithmus" zu finden. In dieser Aufgabe geht es aber nicht darum, den Dijkstra-Algorithmus zu verstehen, sondern darum, ihn zu benutzen.
+Die `while`-Schleife durchläuft einen Codeblock, solange eine vorgegebene Bedingung wahr ist:
+
+```
+while (Schleifenbedingung) 
+{
+  // Anweisungen im Schleifenkörper
+}
+```
+
+Unter [go.tfe.academy/2008271](https://go.tfe.academy/2008271) findest du das zugehörige Video sowie ein Begleit-PDF zur `while`-Schleife.
+
+**Hinweis** : Lass dich nicht von der Komplexität des Programms abschrecken! Es geht in dieser Aufgabe vor allem darum,  einige kleine Änderungen in der Datei `exercises/exe_01/main.cpp` durchzuführen. Der deutlich anspruchsvollere Code in den Dateien `shortest_path.h` und `shortest_path.cpp` wird hier nicht thematisiert. 
+
+<br>
+
+## Aufgabenstellung
+
+Das Ziel dieser Übung besteht darin, alle in der Textdatei `citymap.txt` enthaltenen Städtenamen auf der Konsole auszugeben. Dazu soll eine `while`-Schleife benutzt werden, die so lange wiederholt wird, bis der letzte Eintrag abgearbeitet ist. 
+
+- **Schritt 1** : Definiere eine Zählvariable und initialisiere sie mit dem Wert 0.
+
+- **Schritt 2** : Schreibe den Rumpf einer `while`-Schleife.
+
+- **Schritt 3** : Gestalte die Schleifenbedingung so, dass die Schleife so lange ausgeführt wird, wie die Zählvariable kleiner ist als die Anzahl der Städte in der Textdatei. Letztere kann mit der Funktion `sp.GetNumberOfCities()` abgefragt werden.
+
+- **Schritt 4** : Im Schleifenkörper sollst du den Namen der aktuellen Stadt in einer Variablen vom Typ string speichern. Dieser kann mit dem Befehl `sp.GetCityAtPosition(int)` abgefragt werden. 
+
+- **Schritt 5** : Gib den Namen der Stadt gefolgt von einem Zeilenumbruch auf der Konsole aus. Hierzu kannst du die Befehle `cout` und `endl` nutzen.
+
+- **Schritt 6** : Denke daran, am Ende die Schleifenvariable zu inkrementieren. Überlege auch, was passiert, wenn du diesen Schritt vergessen solltest. 
+
+- **Schritt 7** : Kompiliere den Code und führe ihn aus. Dies geht am einfachsten in der Online-Entwicklungsumgebung `repl.it`, den Link findest du hier --> [go.tfe.academy/2008273](https://go.tfe.academy/2008273) <br><br> Alternativ kannst du den Code auch lokal auf deinem Rechner ausführen. Eine detaillierte Beschreibung, wie das funktioniert, ist hier zu finden --> [`README.md`](./../../README.md#)
+
+- **Schritt 8** : Überprüfe die Ausgabe. Diese sollte folgendermaßen aussehen: 
+
+```
+Oldenburg
+Mainz
+Hannover
+Emden
+Köln
+Frankfurt
+```
+
+**Hinweis** : Falls du nicht mehr weiterkommst und dir die Lösung ansehen möchtest, dann öffne die Datei `exercises/exe_01/solution/main.cpp`, dort findest du die Musterlösung für diese Aufgabe. 
+
+<br>
+
+## Wie geht es nach dieser Übung weiter? 
+
+Wenn du mit dieser Übung fertig bist, kannst du z.B. hier weitermachen: 
+
+1. **Beispiel 1** (`examples/exa_01/main.cpp`) : Routenplanung zwischen mehreren Städten mit einer `while`-Schleife --> [go.tfe.academy/2008273](https://go.tfe.academy/2008273)
+   
+2. **Beispiel 2** (`examples/exa_02/main.cpp`) : Ablaufsteuerung mit einer Zählvariable in der `while`-Schleife --> [go.tfe.academy/2008274](https://go.tfe.academy/2008274)
+   
+3. **Übung 2** (`exercises/exe_02/main.cpp`) : Kombination aller Städte mit verschachtelten `while`-Schleifen --> [go.tfe.academy/2008276](https://go.tfe.academy/2008276)
+
+
+Wenn du Lust auf ein anderes Thema zu C++ hast, dann schau gerne hier nach --> [go.tfe.academy/2008271](https://go.tfe.academy/2008271) 
+
 <br><br>
-***
-
-## HINWEIS 
-Lass dich nicht von der Komplexität des Programms abschrecken! Es geht in dieser und in den nächsten Aufgaben vor allem darum, einige kleine Änderungen in der Datenbasis `citymap.txt` durchzuführen. Der Code in `shortest_path.h`und `shortest_path.cpp` wird in dieser Aufgabe nicht thematisiert.
-<br><br> 
-***
-
-## LERNZIEL
-Das Ziel dieser Aufgabe ist es, dir ein Gefühl für den Aufbau von fremden Programmen und Datenstrukturen zu geben. Es geht hier nicht darum, sofort mit C++ einzusteigen, sondern du sollst eine bestehende Datenbasis erweitern und dir die Logik dahinter selbständig erschließen. 
-<br><br> 
-***
-
-## AUFGABENSTELLUNG
-Die Aufgabe besteht darin, die Textdatei "citymap.txt" um eine zusätzliche Stadt und eine zusätzliche Verbindung zwischen Städten zu erweitern. 
- 
-- Schritt 1 : Füge die Stadt "Wiesbaden" in die Liste ein, indem du das Format der bereits vorhandenen Städte übernimmst und wo nötig anpasst.
-
-- Schritt 2 : Verbinde die Städte Frankfurt und Wiesbaden mit einer Straße, die 39km lang ist. Übernimm das Format der übrigen Verbindungen und passe an, wo nötig.
-
-- Schritt 3 : Verbinde die Städte Wiesbaden und Mainz mit einer Straße, die 17km lang ist. 
-
-- Schritt 4 : Entferne die direkte Verbindung zwischen Frankfurt und Mainz. 
-
-- Schritt 5 : Führe den Code aus und überprüfe die Ausgabe.
-<br><br> 
-***
-
-## COMPILIEREN UND AUSFÜHREN
-Wenn du nicht die Online-IDE repl.it benutzt, dann befolge diese Schritte, 
-um den Code für diese Aufgabe mit den richtigen Dateien zu kompilieren und auszuführen. 
-
-- Schritt 1 : Ein Verzeichnis für die Ausgabedateien anlegen
-Öffne das Terminal im Verzeichnis CPP_ShortestPath und gebe den Befehl `mkdir build; cd build` ein
-
-- Schritt 2 : Den Code der Aufgabe kompilieren
-Um sicherzustellen, dass alle Pfade und Compiler-Optionen richtig eingestellt sind, wird hier ein Makefile verwendet.
-Um diese Aufgabe zu kompilieren, gib den Befehl `cmake .. -DCODE_ID=ex_01; make;` auf der Konsole ein.
-
-- Schritt 3 : Den Code der Aufgabe ausführen
-Um den Code auszuführen, gib den Befehl `./ex_01 ./../citymap.txt` ein. Der Befehl geht davon aus, dass dich immer noch im `build`-Ordner befindest.
-<br><br> 
-***
-
-## MUSTERLÖSUNG
+Copyright 2020, Dr. Andreas Haja
+<br>
+www.thefearlessengineer.com

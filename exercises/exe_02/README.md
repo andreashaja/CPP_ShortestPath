@@ -1,68 +1,90 @@
+# Übung 2: Kombination aller Städte mit verschachtelten `while`-Schleifen
 
-** HINTERGRUND
-Der Code in dieser Aufgabe ist in der Lage, die kürzeste Route zwischen zwei Städten zu berechnen. 
-Der Algorithmus arbeitet ähnlich wie Google Maps und ist in der Literatur unter "Dijkstra-Algorithmus" zu finden. 
-In dieser Aufgabe geht es aber nicht darum, den Dijkstra-Algorithmus zu verstehen, sondern darum, ihn zu benutzen.
--------------
+## Worum geht es?
 
-** HINWEIS
-Hinweis: Lass dich nicht von der Komplexität des Programms abschrecken! 
-Es geht in dieser und in den nächsten Aufgaben vor allem darum,  
-einige kleine Änderungen in "main.cpp" durchzuführen. 
-Der Code in "shortest_path.h / .cpp" wird hier nicht thematisiert. 
--------------
+Das Ziel dieser Aufgabe ist es, zwei `while`-Schleifen derart ineinander zu verschachteln, dass die kürzeste Fahrstrecke zwischen jeder möglichen Städtekombination berechnet und auf der Konsole ausgegeben wird. 
 
-** LERNZIEL
-Das Ziel dieser Aufgabe ist es, dir die Funktionsweise der while-Schleife zu vermitteln. 
-Schleifen können einen Codeblock so lange ausführen, wie eine bestimmte Bedingung erreicht ist. 
-Schleifen sind praktisch, weil sie Zeit sparen, Fehler reduzieren und den Code lesbarer machen.
+```
+while (Bedingung1) 
+{
+  // Anweisungen 
 
-Die while-Schleife durchläuft einen Codeblock, solange eine vorgegebene Bedingung wahr ist:
-
-while (condition) {
-  // code block to be executed
+  while (Bedingung2) 
+  {
+      // Anweisungen 
+  }
 }
+```
 
-Weitere Hintergründe zur while-Schleife findest du in diesem Video: LINK FEHLT
--------------
+Derartige Doppelschleifen kommen in der Praxis sehr häufig vor und die Herausforderung besteht oft darin, die jeweiligen Schleifenvariablen richtig zu initialisieren und passende Schleifenbedingungen festzulegen.
 
-** AUFGABE
-Die Aufgabe besteht darin, alle in der Textdatei "citymap.txt" enthaltenen Städtenamen auf der Konsole auszugeben. 
-Dazu soll eine while-Schleife benutzt werden. 
-Du arbeitest in dieser Aufgabe ausschließlich in der Datei "main.txt".
+Unter [go.tfe.academy/2008271](https://go.tfe.academy/2008271) findest du das zugehörige Video sowie ein Begleit-PDF zur `while`-Schleife.
+
+**Hinweis** : Lass dich nicht von der Komplexität des Programms abschrecken! Es geht in dieser Aufgabe vor allem darum,  einige kleine Änderungen in der Datei `exercises/exe_01/main.cpp` durchzuführen. Der deutlich anspruchsvollere Code in den Dateien `shortest_path.h` und `shortest_path.cpp` wird hier nicht thematisiert. 
+
+<br>
+
+## Aufgabenstellung
+
+In einer äußeren Schleife werden nacheinander alle Städte vom ersten bis zum vorletzten Eintrag in der Textdatei ausgelesen und in einer inneren Schleife wird von der aktuellen Stadt in der äußeren Schleife bis zur letzten Stadt in der Textdatei gelaufen. 
+
+Für jedes Städtepaar wird dann die kürzeste Route berechnet und das Ergebnis auf der Konsole ausgegeben. Beachte dabei, dass nicht versehentlich die Entfernung einer Stadt zu sich selbst berechnet wird.
  
-- Schritt 1
-Definiere eine Zählvariable und initialisiere sie mit dem Wert 0.
+- **Schritt 1** : Passe die Bedingung der `while`-Schleife so an, dass diese vom ersten Eintrag in der Textdatei bis zum vorletzten läuft.
 
-- Schritt 2
-Schreibe den Rumpf einer while-Schleife.
+- **Schritt 2** : Benenne die bereits existierende Variable `city` in `city_outer` um.
 
-- Schritt 3
-Gestalte die Schleifenbedingung so, dass die Schleife so lange ausgeführt wird, wie die Zählvariable kleiner ist als die Anzahl der Städte in der Textdatei. Letztere kann mit der Funktion sp.GetNumberOfCities() abgefragt werden.
+- **Schritt 3** : Füge den Code für eine innere `while`-Schleife ein, deren Zählvariable von der aktuellen Städteposition der äußeren Schleife + 1 startet und die bis zum letzten Eintrag der Textdatei läuft. 
 
-- Schritt 4
-Im Schleifenkörper sollst du den Namen der aktuellen Stadt in einer Variablen vom Typ string speichern. Dieser kann mit dem Befehl sp.GetCityAtPosition(int) abgefragt werden. 
+- **Schritt 4** : Speichere den Namen der aktuellen Stadt in der inneren Schleife in einer Variable namens `city_inner`.
 
-- Schritt 5
-Gib den Namen der Stadt gefolgt von einem Zeilenumbruch auf der Konsole aus. Hierzu kannst du die Befehle cout und endl nutzen.
+- **Schritt 5** : Berechne den kürzesten Weg zwischen beiden Städten mit dem Befehl `FindPathBetweenCities(city_outer, city_inner)`.
 
-- Schritt 6
-Denke daran, am Ende die Schleifenvariable zu inkrementieren. Überlege auch, was passiert, wenn du diesen Schritt vergessen solltest. 
+- **Schritt 6** : Gib das Ergebnis der Pfadsuche mit dem Befehl `sp.PrintTotalDistance()` auf der Konsole aus.
 
-- Schritt 7
-Führe den Code aus und überprüfe die Ausgabe.
--------------
+- **Schritt 7** : Erhöhe am Ende des inneren Schleifenkörpers die passende Zählvariable.
 
-** COMPILIEREN UND AUSFÜHREN
-Wenn du nicht die Online-IDE repl.it benutzt, dann befolge diese Schritte, 
-um den Code für diese Aufgabe mit den richtigen Dateien zu kompilieren und auszuführen. 
+- **Schritt 8** : Kompiliere den Code und führe ihn aus. Dies geht am einfachsten in der Online-Entwicklungsumgebung `repl.it`, den Link findest du hier --> [go.tfe.academy/2008276](https://go.tfe.academy/2008276) <br><br> Alternativ kannst du den Code auch lokal auf deinem Rechner ausführen. Eine detaillierte Beschreibung, wie das funktioniert, ist hier zu finden --> [`README.md`](./../../README.md#)
 
-- Schritt 1 : Ein Verzeichnis für die Ausgabedateien anlegen
-Öffne das Terminal im Verzeichnis CPP_ShortestPath und gebe den Befehl `mkdir build; cd build` ein
+- **Schritt 9** : Überprüfe die Ausgabe. Diese sollte folgendermaßen aussehen: 
 
-- Schritt 2 : Den Code der Aufgabe kompilieren
-Um sicherzustellen, dass alle Pfade und Compiler-Optionen richtig eingestellt sind, wird hier ein Makefile verwendet.
-Um diese Aufgabe zu kompilieren, gib den Befehl `cmake .. -DCODE_ID=ex_02; make;` auf der Konsole ein.
+```
+Oldenburg - Mainz = 540km
+Oldenburg - Hannover = 181km
+Oldenburg - Emden = 84km
+Oldenburg - Köln = 305km
+Oldenburg - Frankfurt = 496km
+Mainz - Hannover = 379km
+Mainz - Emden = 624km
+Mainz - Köln = 235km
+Mainz - Frankfurt = 44km
+Hannover - Emden = 265km
+Hannover - Köln = 486km
+Hannover - Frankfurt = 423km
+Emden - Köln = 389km
+Emden - Frankfurt = 580km
+Köln - Frankfurt = 191km
+```
 
-- Schritt 3 : Den Code der Aufgabe ausführen
-Um den Code auszuführen, gib den Befehl `./ex_02 ./../citymap.txt` ein.
+**Hinweis** : Falls du nicht mehr weiterkommst und dir die Lösung ansehen möchtest, dann öffne die Datei `exercises/exe_02/solution/main.cpp`, dort findest du die Musterlösung für diese Aufgabe.
+
+
+<br>
+
+## Wie geht es nach dieser Übung weiter? 
+
+Wenn du mit dieser Übung fertig bist, kannst du z.B. hier weitermachen: 
+
+1. **Beispiel 1** (`examples/exa_01/main.cpp`) : Routenplanung zwischen mehreren Städten mit einer `while`-Schleife --> [go.tfe.academy/2008273](https://go.tfe.academy/2008273)
+   
+2. **Beispiel 2** (`examples/exa_02/main.cpp`) : Ablaufsteuerung mit einer Zählvariable in der `while`-Schleife --> [go.tfe.academy/2008274](https://go.tfe.academy/2008274)
+
+3. **Übung 1** (`exercises/exe_01/main.cpp`) : Ausgabe aller Städte mit einer `while`-Schleife --> [go.tfe.academy/2008275](https://go.tfe.academy/2008275)
+
+
+Wenn du Lust auf ein anderes Thema zu C++ hast, dann schau gerne hier nach --> [go.tfe.academy/2008271](https://go.tfe.academy/2008271) 
+
+<br><br>
+Copyright 2020, Dr. Andreas Haja 
+<br>
+www.thefearlessengineer.com

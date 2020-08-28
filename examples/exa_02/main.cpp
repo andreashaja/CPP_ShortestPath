@@ -44,6 +44,6 @@ int main(int argc, char **argv)
     sp.PrintShortestPath();
 
     // increment counter variable
-    counter++;
+    counter++; // try counter = counter + 2; as an alternative
   }
 }
