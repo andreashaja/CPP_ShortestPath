@@ -12,7 +12,7 @@
 /* 
  * Aufgabe CPP_SP_2 : Gib alle Städtenamen auf der Konsole aus
  * 
- * Hinweis : * Hinweis : Dies ist die Musterlösung für die Aufgabe.
+ * Hinweis : Dies ist die Musterlösung für die Aufgabe.
  */
 
 #include <iostream>
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     sp.LoadGraphFromFile(filePath);
 
     // student code
-
+    /* MODEL SOLUTION */
     // outer loop over city names
     int i = 0;
     while (i < sp.GetNumberOfCities() - 1)

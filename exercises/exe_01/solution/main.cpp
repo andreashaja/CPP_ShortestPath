@@ -32,6 +32,7 @@ int main(int argc, char **argv)
   sp.LoadGraphFromFile(filePath);
 
   // student code
+  /* MODEL SOLUTION */
   int i = 0;
   while (i < sp.GetNumberOfCities())
   {
