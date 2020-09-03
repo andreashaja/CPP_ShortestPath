@@ -3,6 +3,10 @@
 ## Worum geht es?
 Dieses Projekt ist Teil eines Online-Kurses zur Programmiersprache C++. Mit dem Code lässt sich die kürzeste Route zwischen zwei Städten mit dem bekannten A* / Dijkstra-Algorithmus suchen.
 
+Die Datenbasis für die Suche enthält derzeit 6 Städte und 6 Straßen, kann aber in der Datei `citymaps.txt`leicht erweitert werden. 
+
+![Alt-Text](citymap.jpg "Streckennetz für die Pfadsuche")
+
 Du hast verschiedene Möglichkeiten, dieses Projekt für dich zu nutzen: 
 1. Du ignorierst die eigentliche Umsetzung der Pfadsuche und konzentrierst dich auf die Unterordner `examples` und `exercises`. Dort findest du derzeit vor allem Beispiele und Übungen zur Benutzung der `while`-Schleife in C++.  ( *Skill-Level*: `ANFÄNGER` )
    

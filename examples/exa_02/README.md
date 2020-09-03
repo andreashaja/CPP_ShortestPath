@@ -19,6 +19,10 @@ Beim Hochzählen besteht hier die Möglichkeit, über ein verändertes Inkrement
 - `examples/exa_02/main.cpp` : Enthält die `main`-Funktion zu diesem Beispiel
 
 - `README.md` : Enthält die Projektbeschreibung und eine Anleitung, wie sich dieses Beispiel lokal kompilieren und ausführen lässt (*Variante B*).
+
+- `citymap.txt`: Enthält die Datenbasis für die Suche mit derzeit 6 Städte und 6 Straßen.
+
+![Alt-Text](./../../citymap.jpg "Streckennetz für die Pfadsuche")
   
 
 <br>
