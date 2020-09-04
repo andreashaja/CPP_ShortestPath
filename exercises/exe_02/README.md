@@ -38,7 +38,7 @@ Für jedes Städtepaar wird dann die kürzeste Route berechnet und das Ergebnis 
 
 - **Schritt 4** : Speichere den Namen der aktuellen Stadt in der inneren Schleife in einer Variable namens `city_inner`.
 
-- **Schritt 5** : Berechne den kürzesten Weg zwischen beiden Städten mit dem Befehl `FindPathBetweenCities(city_outer, city_inner)`.
+- **Schritt 5** : Berechne den kürzesten Weg zwischen beiden Städten mit dem Befehl `sp.FindPathBetweenCities(city_outer, city_inner)`.
 
 - **Schritt 6** : Gib das Ergebnis der Pfadsuche mit dem Befehl `sp.PrintTotalDistance()` auf der Konsole aus.
 
